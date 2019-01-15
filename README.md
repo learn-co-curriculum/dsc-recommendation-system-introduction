@@ -8,7 +8,7 @@ Previously, we saw how to develop a simple recommendation system using amazon co
 
 You will be able to:
 - Describe the role and rationale for recommendation systems
-- IDentify various classes of recommendation systems and their benefits/limitations
+- Identify various classes of recommendation systems and their benefits/limitations
 - Understand how collaborative filtering differs from other recommendation approaches 
 
 ## Problem Domain 
