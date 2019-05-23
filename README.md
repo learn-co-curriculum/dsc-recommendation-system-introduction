@@ -2,7 +2,7 @@
 # Introduction to Recommendation Systems 
 
 ## Introduction 
-Previously, we saw how to develop a simple recommendation system using amazon co-purchase data using network analysis techniques. This lesson will give you a brief introduction to recommendation system modeling approaches. We will develop intuition into how these systems work and how collaborative filtering this is a much superior approach to the simple recommendation systems, like the one we saw with ego network analysis. 
+This lesson will give you a brief introduction to recommendation system modeling approaches. We will develop intuition into how these systems work and how collaborative filtering is used to make accurate recommendation systems that can harness the power of big data.
 
 ## Objectives 
 
@@ -13,32 +13,20 @@ You will be able to:
 
 ## Problem Domain 
 
-A recommendation system allows predicting the future preference of a set of items for a user, and recommends the top items from this set. In today's world, people have more options to use from than before,  due to the prevalence of Internet and global reach. 
+The goal of a recommendation system to expose people to items that they will like. In exact terms, a recommendation system predicts the future preference of a set of items for a user, and recommends the top items from this set. In today's world, due to the internet and its global each, people have more options to choose from than ever before.
 
-Consider buying an album from a traditional music store where the options are always limited and mainly depend upon size and type of the store. Now imagine Spotify in comparison to that which increases the options for music listeners by a huge factor. With this new mode of buying, recommendation systems are becoming more popular as it they allow businesses to offer customized suggestions to their customers. Recommendations systems cast a direct impact on profitability and customer satisfaction for most businesses today. 
+Consider buying an album from a traditional music store where the options are always limited and mainly depend upon size and type of the store. There is a physical limitation to how many songs, albums, and artists can be offered. An online product like Spotify, however has a much higher ceiling in terms of storage space. With this new method of selecting products, recommendation systems are a popular way for users to sort through millions of songs to find the ones that are customized exactly for them. Recommendation systems cast a direct impact on profitability and customer satisfaction for most businesses today. With the nearly limitless options consumers have for products online, they need some guidance!
 
-Here's a formal definition:
+This idea can be represented by a concept called the "Long Tail," which is a set of statistical distributions that have a very long "tail" of the distribution, representing many occurences of low frequency things. In the context of consumer products, there are some products that everyone is going to buy: light bulbs, toilet paper, bread etc. There are also items that are far more obscure: specific toys, sports equipment, movies. Recommendation systems are made to help consumers tap into this long tail to assist them in picking from the endless number of options that are made available to them via the internet.
+
+## Long Tail Image here
+Here's a formal definition of recommendation systems from authors Bo [Xiao and Izak Benbasat, 2017](https://misq.org/e-commerce-product-recommendation-agents-use-characteristics-and-impact.html)
+ :
 
 ***Recommendation Systems are software agents that elicit the interests and preferences of individualconsumers […] and make recommendations accordingly. They have the potential to support and improve the quality of the
 decisions consumers make while searching for and selecting products online.***
 
-[Xiao & Benbasat, MISQ, 2007]
 
-
-
-__Given__: 
-The profile of the "active" user and possibly some situational context i.e. user browsing a product or making a purchase etc. 
-
-__Required__:
-Creating a set of closely related items, and a score for each recommendable item in that set
-__Profile__:
-
-User Profile may contain past purchases, ratings in either implicit or explicit form, demographics and interest scores for item features 
-> There are two ways to gather such data. The first method is to ask for explicit ratings from a user, typically on a concrete rating scale (such as rating a movie from one to five stars). The second is to gather data implicitly as the user is in the domain of the system - that is, to log the actions of a user on the site.
-
-
-__Problem__:
-We want to learn a function that predicts the relevance score for a given (typically unseen) item based on user user profile and context.
 
 ## Applications of Recommendation Systems
 
@@ -51,73 +39,104 @@ Let’s understand what all a recommendation systems can do for businesses:
 
 ## Recommendation Systems Approaches 
 
-Recommendation systems reduce information overload by estimating relevance here are two methods to construct a RS:
+There are two main types of recommendation systems: unpersonalized and personalized. The majority of this section, we will focus on personalized recommendation systems because that's where data scientists can provide the most value to companies, but to start off, let's investigate some unpersonalized systems because they can be productive in their own right.
 
-### Recommending the most popular items
-A simple approach could be to recommend the items which are liked by most number of users. This is a simple and  fast approach to implement but has a major limitation i.e. __there is no personalization offered by this approach.__
 
-As popularity is defined on the entire user pool, everybody will see the same results. A website recommending you to buy an electric scooter when you have no interest in that would not yield expected results.
+### Unpersonalized Recommendations
 
-However, in some areas of information like news services (BBC, CNN etc.), we see sections on “Popular News” and "Popular Videos" which can be further subdivided into sections and the most viewed content of each sections are displayed. __At a time there are only a few hot topics and there is a high chance that a user wants to read the news which is being read by most others__. Here is the first page for cnn.com as an example.
+Unpersonalized recommendation systems have been happening since way before machine learning was ever in the public knowledge base. An example of an unpersonalized recommendation would be on YouTube when it recommends the most viewed videos. These are videos that the most people have watched. For the most part, these recommendations aren't too bad. After all, there's a reason why things are popular. This approach, however, is not going to help more niche videos get exposures. It also won't be immensely beneficial to those who have a very particular. Of course, there are times when a simple approach like this might be best. An example of a simple popularity recommender working well is with the news. There's a high chance that everyone who visits a news website is going to want to see whatever is the most popular at that moment in time.
 
 ![](cnn.png)
 
 
+Because unpersonalized recommendations are based on the entire user pool, whatever item is the most popular at any given time would be recommended to you, even if it's something you are completely uninterested in. There are so many items that are far too obscure to be the "most popular" item that might make someone's day. To make more informed recommendations, personalized recommendation systems make use of big data to ensure that users are getting items tailored towards there personal interests, no matter how niche they are.
+
+### Personalized Recommendations
+
+The general problem of personalized recommendation systems can be summarized as:
+
+
+__Given__: 
+The profile of the "active" user and possibly some situational context i.e. user browsing a product or making a purchase etc. 
+
+__Required__:
+Creating a set of items, and a score for each recommendable item in that set
+
+__Profile__:
+
+User Profile may contain past purchases, ratings in either implicit or explicit form, demographics and interest scores for item features 
+
+> There are two ways to gather such data. The first method is to ask for explicit ratings from a user, typically on a concrete rating scale (such as rating a movie from one to five stars). The second is to gather data implicitly as the user is in the domain of the system - that is, to log the actions of a user on the site.
+
+
+__Problem__:
+We want to learn a function that predicts the relevance score for a given (typically unseen) item based on user user profile and context.
+
+
+Within personalized recommendation systems there are many different possible algorithms. We're going to go over the important ones now.
+
+Each of these techniques makes used of different similarity metrics to determine how "similar" items are to one another. The most common similarity metrics are [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance), [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity), [Pearson correlation](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) and the [Jaccard index (useful with binary data)](https://en.wikipedia.org/wiki/Jaccard_index). Each one of these distance metrics has its advantages and disadvantages depending on the type of ratings you are using and the characteristics of your data.
+
+
+### Content-Based Recommenders:
+
+
+> __Main Idea__: If you like an item, you will also like "similar items.
+
+These systems are based on the characteristics of the items themselves. If you ever see a banner ad saying "try other items like this", it is most likely a content-based recommender systems. The advantages of content-based recommender systems is that it is a recommender system that gives the user a bit more information as to why they are receiving. If they are on a page of a book they very much like, they will be happy to see another book that is similar to it. If they are told that this book is similar to their favorite book, they're more than likely to get that book. A disadvantage of content-based recommender systems is that they often require manual or semi-manual tagging of each of products. More advanced versions of content-based recommender systems allow for the development of an average of all the items a user has liked. This allows for a more nuanced approach to incorporate more than one item when calculating which items are most similar.
+
+
+
+
+# New Image Here 
 
 
 
 
 
+### Collaborative Filtering Systems:
 
 
-### Classification Algorithms
-
-We already know many classification algorithms which can be used to make recommendations. Classifiers are parametric solutions so we just need to define some parameters i.e. __features__ of the user and the item. The outcome can be 1 if the user likes it or 0 otherwise. This has advantage of "Personalization" over the popularity model approach. Due to the predictive natural of classification algorithms, such systems work well even if the user’s past history is short or not available.
-
-One of the key limitations for such systems is that the features might actually not be available or even if they are, they may not be sufficient to make a good classifier As the number of users and items grow, making a good classifier will become exponentially difficult. 
-
-![](knn.jpg)
+> __Main Idea__: If user A likes items 5,6,7, and 8 and user B likes items 5,6, and 7, user B will also like item 8.
 
 
-Such systems use some sort of similarity measure to find users that are similar in their profile. These may include Euclidean Distance, Jaccard similarity or Cosine Similarity measures etc. 
-
-Visit here to see how [to use a simple KNN classifier to make recommendations](http://rnowling.github.io/data/science/2016/10/29/knn-recsys.html)
-
-## Recommendation Algorithms
-
-These algorithms are tailor-made for solving the recommendation problem. There are typically two types of algorithms: __Content Based__ and __Collaborative Filtering__. Visit [Here](https://codeburst.io/explanation-of-recommender-systems-in-information-retrieval-13077e1d916c) for an excellent explanation of these algorithmic approaches.
+Collaborative Filtering Systems use a collection of user rating of items to make recommendations for items The issue with collaborative filtering is that you have what is called the "cold start problem." The idea behind it, how can you recommend something based off of user activity if you do not have any user activity to begin with! This can be overcome through various techniques. The most important thing to realize is that there is no one best recommendation system technique. In the end, what matters most is what system actually gets people to get recommendations that they will act upon. It might be that on the aggregate, recommending the most popular items is the most cost effective way to introduce users to new products. 
 
 
-### Content based algorithms:
+__The key idea behind Collaborative Filtering is that similar users share similar interests and that users tend to like items that are similar to one another__.
 
-> If you like an item then you will also like a “similar” item Based on similarity of the items being recommended
-
-![](content.png)
-As the name suggest, these algorithms are strongly based on driving the context of the item. Once you have gathered this context level information on items, you try to find look alike items and recommend them. For instance on Youtube, you can find genre, language, starring of a video. Now based on these information we can find look alike (related) of these videos. Once we have look alike, we simply recommend these videos to a customer who originally saw the first video only. Such algorithms are very common in video online channels, song online stores etc. Plausible reason being, such context level information is far easier to get when the product/item can be explained with few dimensions.
+While this may not be completely true on every occasion, if we have a large enough dataset, if there are patterns present, they will start to emerge.
+Assume there are some users who have bought certain items, we can use a matrix with size $\text{num_users} * \text{num_items}$ to denote the past behavior of users. Each cell in the matrix represents the associated opinion that a user holds. Such matrix is called a __Utility Matrix__. For instance, $M_{i, j}$ denotes how user $u$ likes item $i$. Sometimes these individual ratings are written as $r_{ui}$ for a rating for a given user and a given item. Using the table below as a reference point, if we replaced the u and i variable subscripts with actual values it would look like $r_{\text{Mike},\text{Little Mermaid}} = 3$.
 
 
 
-### Collaborative Filtering algorithms:
-> If a person A likes item 1, 2, 3 and B like 2,3,4 then they have similar interests and A should like item 4 and B should like item 1.
+|        | Toy Story | Cinderella | Little Mermaid | Lion King |
+|--------|-----------|------------|----------------|-----------|
+| Matt   |           | 2          |                | 5         |
+| Lore   | 2         |            | 4              |           |
+| Mike   |           | 5          | 3              | 2         |
+| Forest | 5         |            | 1              |           |
+| Taylor | 1         | 5          |                | 2         |
 
-This algorithm is entirely based on the past behavior and not on the context. This makes it one of the most commonly used algorithm as it is not dependent on any additional information. For instance: product recommendations by e-commerce player like Amazon and merchant recommendations by banks like American Express.
-
-![](two.png)
-
-Further, there are several types of collaborative filtering algorithms :
-
-__User-User Collaborative filtering:__
-Here we find look alike customers (based on similarity) and offer products which first customer’s look alike has chosen in past. This algorithm is very effective but takes a lot of time and resources. It requires to compute every customer pair information which takes time. Therefore, for big base platforms, this algorithm is hard to implement without a very strong parallelizable system.
-
-__Item-Item Collaborative filtering:__
-It is quite similar to previous algorithm, but instead of finding customer look alike, we try finding item look alike. Once we have item look alike matrix, we can easily recommend alike items to customer who have purchased any item from the store. This algorithm is far less resource consuming than user-user collaborative filtering. Hence, for a new customer the algorithm takes far lesser time than user-user collaborate as we don’t need all similarity scores between customers. And with fixed number of products, product-product look alike matrix is fixed over time.
-Other simpler algorithms: There are other approaches like market basket analysis, which generally do not have high predictive power than the algorithms described above.
- 
-
-![](ui.jpeg)
+The task of a recommendation system would be to come up with ratings for users in the spots that are currently empty. As you can imagine, most of the time, these values will be largely empty. For user 1, our recommendation system would try and predict what User 1 would rate Toy Story and the Little Mermaid and then recommend whichever product our model predicts they would rate the highest. The utility matrix above is what's known as an explicit rating. Each person has rated the movies that they've seen. Frequently, we must infer some meaning from the data and use our own judgment to determine how to use it for a recommendation system. Assume that rather than ratings, we only knew whether or not users bought a movie from a streaming website. Let's take a look at what this table would look like:
 
 
-Next we shall look at collobartive filtering in more detail and see how it works under the hood . 
+
+|        | Toy Story | Cinderella | Little Mermaid | Lion King |
+|--------|-----------|------------|----------------|-----------|
+| Matt   |           |  1         |                | 1         |
+| Lore   | 1         |            | 1              |           |
+| Mike   |           | 1          | 1              | 1         |
+| Forest | 1         |            | 1              |           |
+| Taylor | 1         | 1          |                | 1         |
+
+
+This is called __implicit__ ratings because we are assuming that because a person has bought something, they would like to buy other items like it. Of course, this is not necessarily true, but it's better than nothing!
+
+
+Within the domain of collaborative filtering, there are both memory-based approaches and model-based approaches that you learn about in the upcoming lessons.
+
+
 
 ## Further Reading 
 
@@ -125,4 +144,4 @@ Next we shall look at collobartive filtering in more detail and see how it works
 
 ## Summary 
 
-In this lesson , we looked at an overview of recommendation systems. IN addition to the graph the based recommendation systems that we have seen previously, we looked at major classes of such systems and how do they differ from each other. Focusing at the collaborative filtering, we shall move on to developing an user based engine in PySpark. 
+In this lesson , we looked at an overview of recommendation systems. In addition to the graph the based recommendation systems that you have seen previously, you should looked at major classes of such systems and how do they differ from each other. Focusing on collaborative filtering systems, we will move on to developing a user-based engine in PySpark. 
