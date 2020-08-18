@@ -21,7 +21,7 @@ Consider buying an album from a traditional music store where the options are al
 
 This idea can be represented by a concept called the "Long Tail," which is a set of statistical distributions that have a very long "tail" of the distribution, representing many occurences of low frequency things. In the context of consumer products, there are some products that everyone is going to buy: light bulbs, toilet paper, bread etc. There are also items that are far more obscure: specific toys, sports equipment, movies. Recommendation systems are made to help consumers tap into this long tail to assist them in picking from the endless number of options that are made available to them via the internet.
 
-<img src="images/LongTailConcept.png" width = "500">
+<img src="images/LongTailConcept.png" width="500">
 
 
 Here's a formal definition of recommendation systems from authors [Bo Xiao and Izak Benbasat, 2017](https://misq.org/e-commerce-product-recommendation-agents-use-characteristics-and-impact.html)
@@ -50,7 +50,7 @@ There are two main types of recommendation systems: unpersonalized and personali
 
 Unpersonalized recommendation systems have been happening since way before machine learning was ever in the public knowledge base. An example of an unpersonalized recommendation would be on YouTube when it recommends the most viewed videos. These are videos that the most people have watched. For the most part, these recommendations aren't too bad. After all, there's a reason why things are popular. This approach, however, is not going to help more niche videos get exposure. It also won't be immensely beneficial to those who have very particular tastes. Of course, there are times when a simple approach like this might be best. An example of a simple popularity recommender working well is with the news. There's a high chance that everyone who visits a news website is going to want to see whatever is the most popular at that moment in time.
 
-<img src="images/news.png" width = "900">
+<img src="images/news.png" width="900">
 
 
 Because unpersonalized recommendations are based on the entire user pool, whatever item is the most popular at any given time would be recommended to you, even if it's something you are completely uninterested in. There are so many items that are far too obscure to be the "most popular" item that might make someone's day. To make more informed recommendations, personalized recommendation systems make use of big data to ensure that users are getting items tailored towards there personal interests, no matter how niche they are.
@@ -87,7 +87,7 @@ Each of these techniques make use of different similarity metrics to determine h
 
 > __Main Idea__: If you like an item, you will also like "similar" items.
 
-<img src="images/content_based.png" width = "500">
+<img src="images/content_based.png" width="500">
 
 These systems are based on the characteristics of the items themselves. If you ever see a banner ad saying "try other items like this", it is most likely a content-based recommender systems. The advantages of content-based recommender systems is that it is a recommender system that gives the user a bit more information as to why they are seeing these recommendations. If they are on a page of a book they very much like, they will be happy to see another book that is similar to it. If they are told that this book is similar to their favorite book, they're more than likely to get that book. A disadvantage of content-based recommender systems is that they often require manual or semi-manual tagging of each of products. More advanced versions of content-based recommender systems allow for the development of an average of all the items a user has liked. This allows for a more nuanced approach to incorporate more than one item when calculating which items are most similar.
 
@@ -98,7 +98,7 @@ These systems are based on the characteristics of the items themselves. If you e
 
 > __Main Idea__: If user A likes items 5, 6, 7, and 8 and user B likes items 5, 6, and 7, then it is highly likely that user B will also like item 8.
 
-<img src="images/collaborative_filtering.png" width = "450">
+<img src="images/collaborative_filtering.png" width="450">
 
 Collaborative filtering systems use a collection of user rating of items to make recommendations. The issue with collaborative filtering is that you have what is called the "cold start problem." The idea behind it is, how to recommend something based off of user activity if you do not have any user activity to begin with! This can be overcome through various techniques. The most important thing to realize is that there is no one best recommendation system technique. In the end, what matters most is what system actually gets people to get recommendations that they will act upon. It might be that on the aggregate, recommending the most popular items is the most cost effective way to introduce users to new products. 
 
