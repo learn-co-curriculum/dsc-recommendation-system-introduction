@@ -2,6 +2,7 @@
 # Introduction to Recommendation Systems 
 
 ## Introduction 
+
 This lesson will give you a brief introduction to recommendation system modeling approaches. We will develop intuition into how these systems work and how collaborative filtering is used to make accurate recommendation systems that can harness the power of big data.
 
 ## Objectives 
@@ -23,14 +24,10 @@ This idea can be represented by a concept called the "Long Tail," which is a set
 
 <img src="images/LongTailConcept.png" width="500">
 
-
 Here's a formal definition of recommendation systems from authors [Bo Xiao and Izak Benbasat, 2017](https://misq.org/e-commerce-product-recommendation-agents-use-characteristics-and-impact.html)
  :
 
-***Recommendation Systems are software agents that elicit the interests and preferences of individual consumers […] and make recommendations accordingly. They have the potential to support and improve the quality of the
-decisions consumers make while searching for and selecting products online.***
-
-
+>"Recommendation Systems are software agents that elicit the interests and preferences of individual consumers […] and make recommendations accordingly. They have the potential to support and improve the quality of the decisions consumers make while searching for and selecting products online."
 
 ## Applications of Recommendation Systems
 
@@ -45,13 +42,11 @@ Let’s understand what all recommendation systems can do for businesses:
 
 There are two main types of recommendation systems: unpersonalized and personalized. In the majority of this section, we will focus on personalized recommendation systems because that's where data scientists can provide the most value to companies, but to start off, let's investigate some unpersonalized systems because they can be productive in their own right.
 
-
 ### Unpersonalized Recommendations
 
 Unpersonalized recommendation systems have been happening since way before machine learning was ever in the public knowledge base. An example of an unpersonalized recommendation would be on YouTube when it recommends the most viewed videos. These are videos that the most people have watched. For the most part, these recommendations aren't too bad. After all, there's a reason why things are popular. This approach, however, is not going to help more niche videos get exposure. It also won't be immensely beneficial to those who have very particular tastes. Of course, there are times when a simple approach like this might be best. An example of a simple popularity recommender working well is with the news. There's a high chance that everyone who visits a news website is going to want to see whatever is the most popular at that moment in time.
 
 <img src="images/news.png" width="900">
-
 
 Because unpersonalized recommendations are based on the entire user pool, whatever item is the most popular at any given time would be recommended to you, even if it's something you are completely uninterested in. There are so many items that are far too obscure to be the "most popular" item that might make someone's day. To make more informed recommendations, personalized recommendation systems make use of big data to ensure that users are getting items tailored towards there personal interests, no matter how niche they are.
 
@@ -59,11 +54,12 @@ Because unpersonalized recommendations are based on the entire user pool, whatev
 
 The general problem of personalized recommendation systems can be summarized as:
 
-
 __Given__: 
+
 The profile of the "active" user and possibly some situational context, i.e. user browsing a product or making a purchase etc. 
 
 __Required__:
+
 Creating a set of items, and a score for each recommendable item in that set
 
 __Profile__:
@@ -72,10 +68,9 @@ User profile may contain past purchases, ratings in either implicit or explicit 
 
 > There are two ways to gather such data. The first method is to ask for explicit ratings from a user, typically on a concrete rating scale (such as rating a movie from one to five stars). The second is to gather data implicitly as the user is in the domain of the system - that is, to log the actions of a user on the site.
 
-
 __Problem__:
-We want to learn a function that predicts the relevance score for a given (typically unseen) item based on user user profile and context 
 
+We want to learn a function that predicts the relevance score for a given (typically unseen) item based on user user profile and context 
 
 Within personalized recommendation systems there are many different possible algorithms. We're going to go over the important ones now.
 
@@ -84,28 +79,24 @@ Each of these techniques make use of different similarity metrics to determine h
 
 ### Content-Based Recommenders 
 
-
-> __Main Idea__: If you like an item, you will also like "similar" items.
+>__Main Idea__: If you like an item, you will also like "similar" items.
 
 <img src="images/content_based.png" width="500">
 
 These systems are based on the characteristics of the items themselves. If you ever see a banner ad saying "try other items like this", it is most likely a content-based recommender systems. The advantages of content-based recommender systems is that it is a recommender system that gives the user a bit more information as to why they are seeing these recommendations. If they are on a page of a book they very much like, they will be happy to see another book that is similar to it. If they are told that this book is similar to their favorite book, they're more than likely to get that book. A disadvantage of content-based recommender systems is that they often require manual or semi-manual tagging of each of products. More advanced versions of content-based recommender systems allow for the development of an average of all the items a user has liked. This allows for a more nuanced approach to incorporate more than one item when calculating which items are most similar.
 
-
-
 ### Collaborative Filtering Systems
 
-
-> __Main Idea__: If user A likes items 5, 6, 7, and 8 and user B likes items 5, 6, and 7, then it is highly likely that user B will also like item 8.
+>__Main Idea__: If user A likes items 5, 6, 7, and 8 and user B likes items 5, 6, and 7, then it is highly likely that user B will also like item 8.
 
 <img src="images/collaborative_filtering.png" width="450">
 
 Collaborative filtering systems use a collection of user rating of items to make recommendations. The issue with collaborative filtering is that you have what is called the "cold start problem." The idea behind it is, how to recommend something based off of user activity if you do not have any user activity to begin with! This can be overcome through various techniques. The most important thing to realize is that there is no one best recommendation system technique. In the end, what matters most is what system actually gets people to get recommendations that they will act upon. It might be that on the aggregate, recommending the most popular items is the most cost effective way to introduce users to new products. 
 
-
 __The key idea behind collaborative filtering is that similar users share similar interests and that users tend to like items that are similar to one another.__
 
 While this may not be completely true on every occasion, if we have a large enough dataset, if there are patterns present, they will start to emerge.
+
 Assume there are some users who have bought certain items, we can use a matrix with size  <img src="https://render.githubusercontent.com/render/math?math=\text{num_users} * \text{num_items}"> to denote the past behavior of users. Each cell in the matrix represents the associated opinion that a user holds. Such matrix is called a __Utility Matrix__. For instance,  <img src="https://render.githubusercontent.com/render/math?math=M_{i, j}"> denotes how user  <img src="https://render.githubusercontent.com/render/math?math=u"> likes item  <img src="https://render.githubusercontent.com/render/math?math=i"> . Sometimes these individual ratings are written as  <img src="https://render.githubusercontent.com/render/math?math=r_{ui}"> for a rating for a given user and a given item. Using the table below as a reference point, if we replaced the  <img src="https://render.githubusercontent.com/render/math?math=u"> and  <img src="https://render.githubusercontent.com/render/math?math=i"> variable subscripts with actual values it would look like  <img src="https://render.githubusercontent.com/render/math?math=r_{\text{Mike},\text{Little Mermaid}} = 3"> .
 
 
