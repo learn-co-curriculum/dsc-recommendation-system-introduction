@@ -1,4 +1,3 @@
-
 # Introduction to Recommendation Systems 
 
 ## Introduction 
@@ -19,9 +18,9 @@ The goal of a recommendation system is to expose people to items that they will 
 
 Consider buying an album from a traditional music store where the options are always limited and mainly depend upon size and type of the store. There is a physical limitation to how many songs, albums, and artists can be offered. An online product like Spotify, however has a much higher ceiling in terms of storage space. With this new method of selecting products, recommendation systems are a popular way for users to sort through millions of songs to find the ones that are customized exactly for them. Recommendation systems cast a direct impact on profitability and customer satisfaction for most businesses today. With the nearly limitless options consumers have for products online, they need some guidance!
 
-This idea can be represented by a concept called the "Long Tail," which is a set of statistical distributions that have a very long "tail" of the distribution, representing many occurences of low frequency things. In the context of consumer products, there are some products that everyone is going to buy: light bulbs, toilet paper, bread etc. There are also items that are far more obscure: specific toys, sports equipment, movies. Recommendation systems are made to help consumers tap into this long tail to assist them in picking from the endless number of options that are made available to them via the internet.
+This idea can be represented by a concept called the "Long Tail," which is a set of statistical distributions that have a very long "tail" of the distribution, representing many occurrences of low frequency things. In the context of consumer products, there are some products that everyone is going to buy: light bulbs, toilet paper, bread etc. There are also items that are far more obscure: specific toys, sports equipment, movies. Recommendation systems are made to help consumers tap into this long tail to assist them in picking from the endless number of options that are made available to them via the internet.
 
-<img src="images/LongTailConcept.png" width="500">
+<img src="https://raw.githubusercontent.com/learn-co-curriculum/dsc-recommendation-system-introduction/master/images/LongTailConcept.png" alt="graph showing products on the x-axis and popularity on the y-axis. a few products are very popular, labeled Head. many other products are not very popular, labeled Long Tail" width="500">
 
 
 Here's a formal definition of recommendation systems from authors [Bo Xiao and Izak Benbasat, 2017](https://misq.org/e-commerce-product-recommendation-agents-use-characteristics-and-impact.html)
@@ -34,7 +33,7 @@ decisions consumers make while searching for and selecting products online.***
 
 ## Applications of Recommendation Systems
 
-Let’s understand what all recommendation systems can do for businesses:
+Let's understand what all recommendation systems can do for businesses:
 
 - Help in suggesting the merchants/items which a customer might be interested in after buying a product in a marketplace 
 - Estimate profit & loss of many competing items and make recommendations to the customer (e.g. buying and selling stocks)
@@ -50,7 +49,7 @@ There are two main types of recommendation systems: unpersonalized and personali
 
 Unpersonalized recommendation systems have been happening since way before machine learning was ever in the public knowledge base. An example of an unpersonalized recommendation would be on YouTube when it recommends the most viewed videos. These are videos that the most people have watched. For the most part, these recommendations aren't too bad. After all, there's a reason why things are popular. This approach, however, is not going to help more niche videos get exposure. It also won't be immensely beneficial to those who have very particular tastes. Of course, there are times when a simple approach like this might be best. An example of a simple popularity recommender working well is with the news. There's a high chance that everyone who visits a news website is going to want to see whatever is the most popular at that moment in time.
 
-<img src="images/news.png" width="900">
+<img src="https://raw.githubusercontent.com/learn-co-curriculum/dsc-recommendation-system-introduction/master/images/news.png" alt="home page of the New York Times" width="900">
 
 
 Because unpersonalized recommendations are based on the entire user pool, whatever item is the most popular at any given time would be recommended to you, even if it's something you are completely uninterested in. There are so many items that are far too obscure to be the "most popular" item that might make someone's day. To make more informed recommendations, personalized recommendation systems make use of big data to ensure that users are getting items tailored towards there personal interests, no matter how niche they are.
@@ -87,9 +86,9 @@ Each of these techniques make use of different similarity metrics to determine h
 
 > __Main Idea__: If you like an item, you will also like "similar" items.
 
-<img src="images/content_based.png" width="500">
+<img src="https://raw.githubusercontent.com/learn-co-curriculum/dsc-recommendation-system-introduction/master/images/content_based.png" alt="content based filtering. user watches movies, then similar movies are recommended to the user" width="500">
 
-These systems are based on the characteristics of the items themselves. If you ever see a banner ad saying "try other items like this", it is most likely a content-based recommender systems. The advantages of content-based recommender systems is that it is a recommender system that gives the user a bit more information as to why they are seeing these recommendations. If they are on a page of a book they very much like, they will be happy to see another book that is similar to it. If they are told that this book is similar to their favorite book, they're more than likely to get that book. A disadvantage of content-based recommender systems is that they often require manual or semi-manual tagging of each of products. More advanced versions of content-based recommender systems allow for the development of an average of all the items a user has liked. This allows for a more nuanced approach to incorporate more than one item when calculating which items are most similar.
+These systems are based on the characteristics of the items themselves. If you ever see a banner ad saying "try other items like this", it is most likely a content-based recommender system. The advantage of a content-based recommender system is that it is a recommender system that gives the user a bit more information as to why they are seeing these recommendations. If they are on a page of a book they very much like, they will be happy to see another book that is similar to it. If they are told that this book is similar to their favorite book, they're more than likely to get that book. A disadvantage of content-based recommender systems is that they often require manual or semi-manual tagging of each of products. More advanced versions of content-based recommender systems allow for the development of an average of all the items a user has liked. This allows for a more nuanced approach to incorporate more than one item when calculating which items are most similar.
 
 
 
@@ -98,7 +97,7 @@ These systems are based on the characteristics of the items themselves. If you e
 
 > __Main Idea__: If user A likes items 5, 6, 7, and 8 and user B likes items 5, 6, and 7, then it is highly likely that user B will also like item 8.
 
-<img src="images/collaborative_filtering.png" width="450">
+<img src="https://raw.githubusercontent.com/learn-co-curriculum/dsc-recommendation-system-introduction/master/images/collaborative_filtering.png" alt="collaborative filtering: movies watched by both users indicate that the users are similar, then movies are recommended by one user to another user" width="450">
 
 Collaborative filtering systems use a collection of user rating of items to make recommendations. The issue with collaborative filtering is that you have what is called the "cold start problem." The idea behind it is, how to recommend something based off of user activity if you do not have any user activity to begin with! This can be overcome through various techniques. The most important thing to realize is that there is no one best recommendation system technique. In the end, what matters most is what system actually gets people to get recommendations that they will act upon. It might be that on the aggregate, recommending the most popular items is the most cost effective way to introduce users to new products. 
 
@@ -106,7 +105,7 @@ Collaborative filtering systems use a collection of user rating of items to make
 __The key idea behind collaborative filtering is that similar users share similar interests and that users tend to like items that are similar to one another.__
 
 While this may not be completely true on every occasion, if we have a large enough dataset, if there are patterns present, they will start to emerge.
-Assume there are some users who have bought certain items, we can use a matrix with size $\text{num_users} * \text{num_items}$ to denote the past behavior of users. Each cell in the matrix represents the associated opinion that a user holds. Such matrix is called a __Utility Matrix__. For instance, $M_{i, j}$ denotes how user $u$ likes item $i$. Sometimes these individual ratings are written as $r_{ui}$ for a rating for a given user and a given item. Using the table below as a reference point, if we replaced the $u$ and $i$ variable subscripts with actual values it would look like $r_{\text{Mike},\text{Little Mermaid}} = 3$.
+Assume there are some users who have bought certain items, we can use a matrix with size $\text{num_users} * \text{num_items}$ to denote the past behavior of users. Each cell in the matrix represents the associated opinion that a user holds. Such a matrix is called a __Utility Matrix__. For instance, $M_{i, j}$ denotes how user $u$ likes item $i$. Sometimes these individual ratings are written as $r_{ui}$ for a rating for a given user and a given item. Using the table below as a reference point, if we replaced the $u$ and $i$ variable subscripts with actual values it would look like $r_{\text{Mike},\text{Little Mermaid}} = 3$.
 
 
 
@@ -118,7 +117,7 @@ Assume there are some users who have bought certain items, we can use a matrix w
 | Forest | 5         |            | 1              |           |
 | Taylor | 1         | 5          |                | 2         |
 
-The task of a recommendation system would be to come up with ratings for users in the spots that are currently empty. As you can imagine, most of the time, these values will be largely empty. For user 1, our recommendation system would try and predict what user 1 would rate Toy Story and the Little Mermaid and then recommend whichever product our model predicts they would rate the highest. The utility matrix above is what's known as an explicit rating. Each person has rated the movies that they've seen. Frequently, we must infer some meaning from the data and use our own judgment to determine how to use it for a recommendation system. Assume that rather than ratings, we only knew whether or not users bought a movie from a streaming website. Let's take a look at what this table would look like:
+The task of a recommendation system would be to come up with ratings for users in the spots that are currently empty. As you can imagine, most of the time, these values will be largely empty. For user 1, our recommendation system would try to predict what user 1 would rate Toy Story and the Little Mermaid and then recommend whichever product our model predicts they would rate the highest. The utility matrix above is what's known as an explicit rating. Each person has rated the movies that they've seen. Frequently, we must infer some meaning from the data and use our own judgment to determine how to use it for a recommendation system. Assume that rather than ratings, we only knew whether or not users bought a movie from a streaming website. Let's take a look at what this table would look like:
 
 
 
